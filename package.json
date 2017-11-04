@@ -1,0 +1,19 @@
+{
+  "name": "ghostjacking-cli",
+  "version": "0.0.1",
+  "description": "A command-line tool for creating Ghost theme development environments using Foundation and Docker",
+  "main": "ghostjacking.js",
+  "bin": {
+    "ghostjacking": "./index.js"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "TommyEm",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "readline-sync": "^1.4.7",
+    "shelljs": "^0.7.8"
+  }
+}
