@@ -8,7 +8,7 @@ var shell        = require('shelljs');
 program
   .version('0.0.1')
   .parse(process.argv);
-  
+
 
 if (!shell.which('git')) {
   shell.echo('Sorry, git is not installed.');
@@ -22,9 +22,11 @@ shell.exec('git clone --depth 1 https://Holyshitem@bitbucket.org/Holyshitem/ghos
 
 shell.echo('Cloning Ghost');
 shell.exec('git clone --depth 1 https://github.com/TryGhost/Ghost.git ' + projectName + '/dest');
-// shell.exec('git filter-branch --prune-empty --subdirectory-filter ' + projectName + '/dest/content HEAD');
-shell.rm('-rf', projectName + '/dest/.git');
-shell.rm('-rf', projectName + '/dest/.github');
+shell.cd(projectName + '/dest');
+shell.exec('git filter-branch --prune-empty --subdirectory-filter content HEAD');
+shell.rm('-rf', '.git');
+shell.rm('-rf', '.github');
+shell.cd('../..');
 
 shell.echo('Cloning Casper');
 shell.exec('git clone --depth=1 --branch=master https://github.com/TryGhost/Casper.git ' + projectName + '/src');
